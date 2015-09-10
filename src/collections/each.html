@@ -95,9 +95,10 @@
     	<script>
     		//CODE HIGHLIGHTER
     		//http://steamdev.com/snippet/  for themes
-    		$("pre.js").snippet("javascript",{style:"rand01",transparent:true,showNum:true});
-			$("pre.htmlCode").snippet("html",{style:"matlab",transparent:true,showNum:true});
-			$("pre.styles").snippet("css",{style:"matlab",transparent:true,showNum:true});
+
+    		$("pre.js").snippet("javascript",appConfig.jsConfig);
+			$("pre.htmlCode").snippet("html",appConfig.htmlConfig);
+			$("pre.styles").snippet("css",appConfig.styleConfig);
     	</script>
     </body>
 </html>

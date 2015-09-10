@@ -167,6 +167,12 @@ ul {
   display: inline;
 }
 
+.subTitle {
+    font-size: 2em;
+    font-weight: lighter;
+    padding: 0px 10px 20px 10px;
+}
+
 output {
     border: 1px solid #ddd;
     background-color: #efe;
