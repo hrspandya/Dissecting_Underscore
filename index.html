@@ -11,10 +11,390 @@
         <!-- Place favicon.ico in the root directory -->
 
         <!-- <link rel="stylesheet" href="css/normalize.css"> -->
+
+        <style>
+			body {
+			  font-size: 14px;
+			  line-height: 22px;
+			  background: #f4f4f4 url(docs/images/background.png);
+			  color: #000;
+			  font-family: Helvetica Neue, Helvetica, Arial;
+			}
+			.interface {
+			  font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif !important;
+			}
+			div#sidebar {
+			  background: #fff;
+			  position: fixed;
+			  top: 0; left: 0; bottom: 0;
+			  width: 200px;
+			  overflow-y: auto;
+			  overflow-x: hidden;
+			  -webkit-overflow-scrolling: touch;
+			  padding: 15px 0 30px 30px;
+			  border-right: 1px solid #bbb;
+			  box-shadow: 0 0 20px #ccc; -webkit-box-shadow: 0 0 20px #ccc; -moz-box-shadow: 0 0 20px #ccc;
+			}
+			a.toc_title, a.toc_title:visited {
+			  display: block;
+			  color: black;
+			  font-weight: bold;
+			  margin-top: 15px;
+			}
+			  a.toc_title:hover {
+			    text-decoration: underline;
+			  }
+			  #sidebar .version {
+			    font-size: 10px;
+			    font-weight: normal;
+			  }
+			ul.toc_section {
+			  font-size: 11px;
+			  line-height: 14px;
+			  margin: 5px 0 0 0;
+			  padding-left: 0px;
+			  list-style-type: none;
+			  font-family: Lucida Grande;
+			}
+			  .toc_section li {
+			    cursor: pointer;
+			    margin: 0 0 3px 0;
+			  }
+			    .toc_section li a {
+			      text-decoration: none;
+			      color: black;
+			    }
+			      .toc_section li a:hover {
+			        text-decoration: underline;
+			      }
+			div.container {
+			  width: 550px;
+			  margin: 40px 0 50px 260px;
+			}
+			img#logo {
+			  width: 396px;
+			  height: 69px;
+			}
+			div.warning {
+			  margin-top: 15px;
+			  font: bold 11px Arial;
+			  color: #770000;
+			}
+			p {
+			  margin: 20px 0;
+			  width: 550px;
+			}
+			a, a:visited {
+			  color: #444;
+			}
+			a:active, a:hover {
+			  color: #000;
+			}
+			h1, h2, h3, h4, h5, h6 {
+			  padding-top: 20px;
+			}
+			  h2 {
+			    font-size: 20px;
+			  }
+			b.header {
+			  font-size: 16px;
+			  line-height: 30px;
+			}
+			span.alias {
+			  font-size: 14px;
+			  font-style: italic;
+			  margin-left: 20px;
+			}
+			table, tr, td {
+			  margin: 0; padding: 0;
+			}
+			  td {
+			    padding: 2px 12px 2px 0;
+			  }
+			  table .rule {
+			    height: 1px;
+			    background: #ccc;
+			    margin: 5px 0;
+			  }
+			ul {
+			  list-style-type: circle;
+			  padding: 0 0 0 20px;
+			}
+			  li {
+			    margin-bottom: 10px;
+			  }
+			  code, pre, tt {
+			    font-family: Monaco, Consolas, "Lucida Console", monospace;
+			    font-size: 12px;
+			    line-height: 18px;
+			    font-style: normal;
+			  }
+			    tt {
+			      padding: 0px 3px;
+			      background: #fff;
+			      border: 1px solid #ddd;
+			      zoom: 1;
+			    }
+			    code {
+			      margin-left: 20px;
+			    }
+			    pre {
+			      font-size: 12px;
+			      padding: 2px 0 2px 15px;
+			      border-left: 5px solid #bbb;
+			      margin: 0px 0 30px;
+			    }
+			@media only screen and (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 640px),
+			      only screen and (-o-min-device-pixel-ratio: 3/2) and (max-width: 640px),
+			      only screen and (min-device-pixel-ratio: 1.5) and (max-width: 640px) {
+			  img {
+			    max-width: 100%;
+			  }
+			  div#sidebar {
+			    -webkit-overflow-scrolling: initial;
+			    position: relative;
+			    width: 90%;
+			    height: 120px;
+			    left: 0;
+			    top: -7px;
+			    padding: 10px 0 10px 30px;
+			    border: 0;
+			  }
+			  img#logo {
+			    width: auto;
+			    height: auto;
+			  }
+			  div.container {
+			    margin: 0;
+			    width: 100%;
+			  }
+			  p, div.container ul {
+			    max-width: 98%;
+			    overflow-x: scroll;
+			  }
+			  pre {
+			    overflow: scroll;
+			  }
+			}
+		</style>
+
     </head>
     <body>
 	
-	Dissecting Underscore
+	<div id="sidebar" class="interface">
+
+		<a class="toc_title" href="#">
+		  Underscore.js <span class="version">(1.8.3)</span>
+		</a>
+		
+
+		<a class="toc_title" href="#introduction">
+		  What is this?
+		</a>
+
+		<a class="toc_title" href="#collections">
+		  Collections
+		</a>
+		<ul class="toc_section">
+		  <li>- <a href="#each">each</a></li>
+		  <li>- <a href="#map">map</a></li>
+		  <li>- <a href="#reduce">reduce</a></li>
+		  <li>- <a href="#reduceRight">reduceRight</a></li>
+		  <li>- <a href="#find">find</a></li>
+		  <li>- <a href="#filter">filter</a></li>
+		  <li>- <a href="#where">where</a></li>
+		  <li>- <a href="#findWhere">findWhere</a></li>
+		  <li>- <a href="#reject">reject</a></li>
+		  <li>- <a href="#every">every</a></li>
+		  <li>- <a href="#some">some</a></li>
+		  <li>- <a href="#contains">contains</a></li>
+		  <li>- <a href="#invoke">invoke</a></li>
+		  <li>- <a href="#pluck">pluck</a></li>
+		  <li>- <a href="#max">max</a></li>
+		  <li>- <a href="#min">min</a></li>
+		  <li>- <a href="#sortBy">sortBy</a></li>
+		  <li>- <a href="#groupBy">groupBy</a></li>
+		  <li>- <a href="#indexBy">indexBy</a></li>
+		  <li>- <a href="#countBy">countBy</a></li>
+		  <li>- <a href="#shuffle">shuffle</a></li>
+		  <li>- <a href="#sample">sample</a></li>
+		  <li>- <a href="#toArray">toArray</a></li>
+		  <li>- <a href="#size">size</a></li>
+		  <li>- <a href="#partition">partition</a></li>
+		</ul>
+
+		<a class="toc_title" href="#arrays">
+		  Arrays
+		</a>
+		<ul class="toc_section">
+		  <li>- <a href="#first">first</a></li>
+		  <li>- <a href="#initial">initial</a></li>
+		  <li>- <a href="#last">last</a></li>
+		  <li>- <a href="#rest">rest</a></li>
+		  <li>- <a href="#compact">compact</a></li>
+		  <li>- <a href="#flatten">flatten</a></li>
+		  <li>- <a href="#without">without</a></li>
+		  <li>- <a href="#union">union</a></li>
+		  <li>- <a href="#intersection">intersection</a></li>
+		  <li>- <a href="#difference">difference</a></li>
+		  <li>- <a href="#uniq">uniq</a></li>
+		  <li>- <a href="#zip">zip</a></li>
+		  <li>- <a href="#unzip">unzip</a></li>
+		  <li>- <a href="#object">object</a></li>
+		  <li>- <a href="#indexOf">indexOf</a></li>
+		  <li>- <a href="#lastIndexOf">lastIndexOf</a></li>
+		  <li>- <a href="#sortedIndex">sortedIndex</a></li>
+		  <li>- <a href="#findIndex">findIndex</a></li>
+		  <li>- <a href="#findLastIndex">findLastIndex</a></li>
+		  <li>- <a href="#range">range</a></li>
+		</ul>
+
+		<a class="toc_title" href="#functions">
+		  Functions
+		</a>
+		<ul class="toc_section">
+		  <li>- <a href="#bind">bind</a></li>
+		  <li>- <a href="#bindAll">bindAll</a></li>
+		  <li>- <a href="#partial">partial</a></li>
+		  <li>- <a href="#memoize">memoize</a></li>
+		  <li>- <a href="#delay">delay</a></li>
+		  <li>- <a href="#defer">defer</a></li>
+		  <li>- <a href="#throttle">throttle</a></li>
+		  <li>- <a href="#debounce">debounce</a></li>
+		  <li>- <a href="#once">once</a></li>
+		  <li>- <a href="#after">after</a></li>
+		  <li>- <a href="#before">before</a></li>
+		  <li>- <a href="#wrap">wrap</a></li>
+		  <li>- <a href="#negate">negate</a></li>
+		  <li>- <a href="#compose">compose</a></li>
+		</ul>
+
+		<a class="toc_title" href="#objects">
+		  Objects
+		</a>
+		<ul class="toc_section">
+		  <li>- <a href="#keys">keys</a></li>
+		  <li>- <a href="#allKeys">allKeys</a></li>
+		  <li>- <a href="#values">values</a></li>
+		  <li>- <a href="#mapObject">mapObject</a></li>
+		  <li>- <a href="#pairs">pairs</a></li>
+		  <li>- <a href="#invert">invert</a></li>
+		  <li>- <a href="#create">create</a></li>
+		  <li>- <a href="#object-functions">functions</a></li>
+		  <li>- <a href="#findKey">findKey</a></li>
+		  <li>- <a href="#extend">extend</a></li>
+		  <li>- <a href="#extendOwn">extendOwn</a></li>
+		  <li>- <a href="#pick">pick</a></li>
+		  <li>- <a href="#omit">omit</a></li>
+		  <li>- <a href="#defaults">defaults</a></li>
+		  <li>- <a href="#clone">clone</a></li>
+		  <li>- <a href="#tap">tap</a></li>
+		  <li>- <a href="#has">has</a></li>
+		  <li>- <a href="#matcher">matcher</a></li>
+		  <li>- <a href="#property">property</a></li>
+		  <li>- <a href="#propertyOf">propertyOf</a></li>
+		  <li>- <a href="#isEqual">isEqual</a></li>
+		  <li>- <a href="#isMatch">isMatch</a></li>
+		  <li>- <a href="#isEmpty">isEmpty</a></li>
+		  <li>- <a href="#isElement">isElement</a></li>
+		  <li>- <a href="#isArray">isArray</a></li>
+		  <li>- <a href="#isObject">isObject</a></li>
+		  <li>- <a href="#isArguments">isArguments</a></li>
+		  <li>- <a href="#isFunction">isFunction</a></li>
+		  <li>- <a href="#isString">isString</a></li>
+		  <li>- <a href="#isNumber">isNumber</a></li>
+		  <li>- <a href="#isFinite">isFinite</a></li>
+		  <li>- <a href="#isBoolean">isBoolean</a></li>
+		  <li>- <a href="#isDate">isDate</a></li>
+		  <li>- <a href="#isRegExp">isRegExp</a></li>
+		  <li>- <a href="#isNaN">isNaN</a></li>
+		  <li>- <a href="#isNull">isNull</a></li>
+		  <li>- <a href="#isUndefined">isUndefined</a></li>
+		</ul>
+
+		<a class="toc_title" href="#utility">
+		  Utility
+		</a>
+		<ul class="toc_section">
+		  <li>- <a href="#noConflict">noConflict</a></li>
+		  <li>- <a href="#identity">identity</a></li>
+		  <li>- <a href="#constant">constant</a></li>
+		  <li>- <a href="#noop">noop</a></li>
+		  <li>- <a href="#times">times</a></li>
+		  <li>- <a href="#random">random</a></li>
+		  <li>- <a href="#mixin">mixin</a></li>
+		  <li>- <a href="#iteratee">iteratee</a></li>
+		  <li>- <a href="#uniqueId">uniqueId</a></li>
+		  <li>- <a href="#escape">escape</a></li>
+		  <li>- <a href="#unescape">unescape</a></li>
+		  <li>- <a href="#result">result</a></li>
+		  <li>- <a href="#now">now</a></li>
+		  <li>- <a href="#template">template</a></li>
+		</ul>
+
+		<a class="toc_title" href="#chaining">
+		  Chaining
+		</a>
+		<ul class="toc_section">
+		  <li>- <a href="#chain">chain</a></li>
+		  <li>- <a href="#value">value</a></li>
+		</ul>
+
+		<a class="toc_title" href="#links">
+		  Links
+		</a>
+
+		<a class="toc_title" href="#changelog">
+		  Change Log
+		</a>
+
+	</div>
+
+
+
+
+  <div class="container">
+	<h2>Dissecting Underscore</h2>
+	<br>
+
+	<p id="introduction">
+      <strong>What is this?</strong>
+      <br>
+      <br>
+
+      The purpose of this post is to dissect the Underscore and understand how underscore works behind the scene. Going over underscore library code and truly understand and learn from it.
+
+      Not to mention, Most of the Front End engineer Interview questions are likely to come from Underscore. And by truly understanding Underscore, you should be able to clear any questions people may ask you.
+
+      Let's start,  
+    </p>
+
+
+    <br>
+	<h2 id="collections">Collection Functions (Arrays or Objects)</h2>
+
+
+    
+	<p id="each">
+        <b class="header">each</b><code>_.each(list, iteratee, [context])</code>
+        <span class="alias">Alias: <b>forEach</b></span>
+        <br>
+        Iterates over a <b>list</b> of elements, yielding each in turn to an <b>iteratee</b>
+        function. The <b>iteratee</b> is bound to the <b>context</b> object, if one is
+        passed. Each invocation of <b>iteratee</b> is called with three arguments:
+        <tt>(element, index, list)</tt>. If <b>list</b> is a JavaScript object, <b>iteratee</b>'s
+        arguments will be <tt>(value, key, list)</tt>. Returns the <b>list</b> for chaining.
+      </p>
+
+
+
+
+
+
+
+
+</div>
+
     
     </body>
 </html>
