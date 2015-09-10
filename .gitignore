@@ -1,0 +1,14 @@
+# node 
+node_modules/
+node/
+
+# bower
+bower_components/
+
+# Jasmine Karma Report
+test/javascript/
+
+
+# production generated files
+
+public_html

@@ -10,173 +10,7 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
-        <!-- <link rel="stylesheet" href="css/normalize.css"> -->
-
-        <style>
-			body {
-			  font-size: 14px;
-			  line-height: 22px;
-			  background: #f4f4f4 url(docs/images/background.png);
-			  color: #000;
-			  font-family: Helvetica Neue, Helvetica, Arial;
-			}
-			.interface {
-			  font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif !important;
-			}
-			div#sidebar {
-			  background: #fff;
-			  position: fixed;
-			  top: 0; left: 0; bottom: 0;
-			  width: 200px;
-			  overflow-y: auto;
-			  overflow-x: hidden;
-			  -webkit-overflow-scrolling: touch;
-			  padding: 15px 0 30px 30px;
-			  border-right: 1px solid #bbb;
-			  box-shadow: 0 0 20px #ccc; -webkit-box-shadow: 0 0 20px #ccc; -moz-box-shadow: 0 0 20px #ccc;
-			}
-			a.toc_title, a.toc_title:visited {
-			  display: block;
-			  color: black;
-			  font-weight: bold;
-			  margin-top: 15px;
-			}
-			  a.toc_title:hover {
-			    text-decoration: underline;
-			  }
-			  #sidebar .version {
-			    font-size: 10px;
-			    font-weight: normal;
-			  }
-			ul.toc_section {
-			  font-size: 11px;
-			  line-height: 14px;
-			  margin: 5px 0 0 0;
-			  padding-left: 0px;
-			  list-style-type: none;
-			  font-family: Lucida Grande;
-			}
-			  .toc_section li {
-			    cursor: pointer;
-			    margin: 0 0 3px 0;
-			  }
-			    .toc_section li a {
-			      text-decoration: none;
-			      color: black;
-			    }
-			      .toc_section li a:hover {
-			        text-decoration: underline;
-			      }
-			div.container {
-			  width: 550px;
-			  margin: 40px 0 50px 260px;
-			}
-			img#logo {
-			  width: 396px;
-			  height: 69px;
-			}
-			div.warning {
-			  margin-top: 15px;
-			  font: bold 11px Arial;
-			  color: #770000;
-			}
-			p {
-			  margin: 20px 0;
-			  width: 550px;
-			}
-			a, a:visited {
-			  color: #444;
-			}
-			a:active, a:hover {
-			  color: #000;
-			}
-			h1, h2, h3, h4, h5, h6 {
-			  padding-top: 20px;
-			}
-			  h2 {
-			    font-size: 20px;
-			  }
-			b.header {
-			  font-size: 16px;
-			  line-height: 30px;
-			}
-			span.alias {
-			  font-size: 14px;
-			  font-style: italic;
-			  margin-left: 20px;
-			}
-			table, tr, td {
-			  margin: 0; padding: 0;
-			}
-			  td {
-			    padding: 2px 12px 2px 0;
-			  }
-			  table .rule {
-			    height: 1px;
-			    background: #ccc;
-			    margin: 5px 0;
-			  }
-			ul {
-			  list-style-type: circle;
-			  padding: 0 0 0 20px;
-			}
-			  li {
-			    margin-bottom: 10px;
-			  }
-			  code, pre, tt {
-			    font-family: Monaco, Consolas, "Lucida Console", monospace;
-			    font-size: 12px;
-			    line-height: 18px;
-			    font-style: normal;
-			  }
-			    tt {
-			      padding: 0px 3px;
-			      background: #fff;
-			      border: 1px solid #ddd;
-			      zoom: 1;
-			    }
-			    code {
-			      margin-left: 20px;
-			    }
-			    pre {
-			      font-size: 12px;
-			      padding: 2px 0 2px 15px;
-			      border-left: 5px solid #bbb;
-			      margin: 0px 0 30px;
-			    }
-			@media only screen and (-webkit-min-device-pixel-ratio: 1.5) and (max-width: 640px),
-			      only screen and (-o-min-device-pixel-ratio: 3/2) and (max-width: 640px),
-			      only screen and (min-device-pixel-ratio: 1.5) and (max-width: 640px) {
-			  img {
-			    max-width: 100%;
-			  }
-			  div#sidebar {
-			    -webkit-overflow-scrolling: initial;
-			    position: relative;
-			    width: 90%;
-			    height: 120px;
-			    left: 0;
-			    top: -7px;
-			    padding: 10px 0 10px 30px;
-			    border: 0;
-			  }
-			  img#logo {
-			    width: auto;
-			    height: auto;
-			  }
-			  div.container {
-			    margin: 0;
-			    width: 100%;
-			  }
-			  p, div.container ul {
-			    max-width: 98%;
-			    overflow-x: scroll;
-			  }
-			  pre {
-			    overflow: scroll;
-			  }
-			}
-		</style>
+        <link rel="stylesheet" href="css/main.css">
 
     </head>
     <body>
@@ -188,16 +22,16 @@
 		</a>
 		
 
-		<a class="toc_title" href="#introduction">
+		<a class="toc_title" href="#introduction" link-data="introduction">
 		  What is this?
 		</a>
 
-		<a class="toc_title" href="#collections">
+		<a class="toc_title" href="#collections" link-data="collections">
 		  Collections
 		</a>
 		<ul class="toc_section">
-		  <li>- <a href="#each">each</a></li>
-		  <li>- <a href="#map">map</a></li>
+		  <li>- <a href="#each" link-data="collections/each">each</a></li>
+		  <li>- <a href="#map" link-data="collections/map">map</a></li>
 		  <li>- <a href="#reduce">reduce</a></li>
 		  <li>- <a href="#reduceRight">reduceRight</a></li>
 		  <li>- <a href="#find">find</a></li>
@@ -353,48 +187,23 @@
 
 
 
-  <div class="container">
-	<h2>Dissecting Underscore</h2>
-	<br>
+	<div class="right_container">
+		<iframe class="result_iframe" src="introduction.html">
+		</iframe>
+  	</div>
 
-	<p id="introduction">
-      <strong>What is this?</strong>
-      <br>
-      <br>
+  	<script type="text/javascript" src="js/libs/jquery-2.1.4.min.js"></script>  	
+	<script src="js/libs/jquery.snippet.js" type="text/javascript"></script>
+	
+  	<script>
+  		$("a").on("click", function(){
+  		  		
+  			$( ".right_container" ).load( "src/"+$(this).attr("link-data") + ".html", function() {
+			  //alert( "Load was performed." );
+			});
 
-      The purpose of this post is to dissect the Underscore and understand how underscore works behind the scene. Going over underscore library code and truly understand and learn from it.
+  		});
+  	</script>
 
-      Not to mention, Most of the Front End engineer Interview questions are likely to come from Underscore. And by truly understanding Underscore, you should be able to clear any questions people may ask you.
-
-      Let's start,  
-    </p>
-
-
-    <br>
-	<h2 id="collections">Collection Functions (Arrays or Objects)</h2>
-
-
-    
-	<p id="each">
-        <b class="header">each</b><code>_.each(list, iteratee, [context])</code>
-        <span class="alias">Alias: <b>forEach</b></span>
-        <br>
-        Iterates over a <b>list</b> of elements, yielding each in turn to an <b>iteratee</b>
-        function. The <b>iteratee</b> is bound to the <b>context</b> object, if one is
-        passed. Each invocation of <b>iteratee</b> is called with three arguments:
-        <tt>(element, index, list)</tt>. If <b>list</b> is a JavaScript object, <b>iteratee</b>'s
-        arguments will be <tt>(value, key, list)</tt>. Returns the <b>list</b> for chaining.
-      </p>
-
-
-
-
-
-
-
-
-</div>
-
-    
     </body>
 </html>

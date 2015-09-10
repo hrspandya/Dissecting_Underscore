@@ -1,0 +1,31 @@
+	<h2>Dissecting Underscore</h2>
+	<br>
+
+	<p id="introduction">
+      <strong>What is this?</strong>
+      <br>
+      <br>
+
+      The purpose of this post is to dissect the Underscore and understand how underscore works behind the scene. Going over underscore library code and truly understand and learn from it.
+
+      Not to mention, Most of the Front End engineer Interview questions are likely to come from Underscore. And by truly understanding Underscore, you should be able to clear any questions people may ask you.
+
+      Let's start,  
+    </p>
+
+
+    <br>
+	<h2 id="collections">Collection Functions (Arrays or Objects)</h2>
+
+
+    
+	<p id="each">
+        <b class="header">each</b><code>_.each(list, iteratee, [context])</code>
+        <span class="alias">Alias: <b>forEach</b></span>
+        <br>
+        Iterates over a <b>list</b> of elements, yielding each in turn to an <b>iteratee</b>
+        function. The <b>iteratee</b> is bound to the <b>context</b> object, if one is
+        passed. Each invocation of <b>iteratee</b> is called with three arguments:
+        <tt>(element, index, list)</tt>. If <b>list</b> is a JavaScript object, <b>iteratee</b>'s
+        arguments will be <tt>(value, key, list)</tt>. Returns the <b>list</b> for chaining.
+      </p>
