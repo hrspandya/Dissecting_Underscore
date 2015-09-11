@@ -16,14 +16,33 @@
 
 
     	<!-- @@@@@@@@@  THIS CODE IS FOR DISPLAY PURPOSE, UPDATE ONLY WHEN REAL CODE IS UPDATES ==== -->
-    	
+    	<pre>
+    		_.reduce(list, iteratee, [memo], [context])
+    	</pre>
+
+    	<pre class="js">
+    		var sum = _.reduce([1, 2, 3], function(memo, num){ return memo + num; }, 0);
+			=> 6
+		</pre>
+
+		<div class="goodRead">
+			<a href="http://elijahmanor.com/reducing-filter-and-map-down-to-reduce/" target="_blank">Good Read: </a>
+		</div>
+
+		<div class="my_solution">
+			My Solution:
+		</div>
+
     	<pre class="js">
 	    	var array = [4, 5, 6];
-    		var arrayObject = {one: 1, two: 2, three: 3};
-			var context = [0, 10, 20, 30, 40, 50, 60];
+    		var contextArray = [0, 10, 20, 30, 40, 50, 60];
 
-			//passing array/object , function, and Context
-			function map(array, func, context){								
+    		var arrayObject = {one: 1, two: 2, three: 3};			
+			var contextObject = {one: 10, two: 20, three: 33};
+
+			//passing array/object , function, memo, and Context
+			//memo will store the result values and return in the end
+			function reduce(array, func, memo, context){								
 				var keys = Object.keys(array);	//this will return an array of keys 
 				var result;
 				var returnResult;
@@ -32,57 +51,56 @@
 				//Since we need to support both array and object looping, we can loop on Object.keys(array)
 				//See below				
 				for(var i = 0; i < keys.length; i++){					
-
+					debugger;
 					//Since Context is optional can be undefined, and so checking for undefined, 					
 					if(context == void 0){
-						//If undefined then dont pass context
-						result = func.call(array, keys[i]);						
+						//If undefined then dont pass context, instead pass array as your context
+						memo = func.call(array, memo, keys[i]);						
 					}else{
 						//for each array value call the function passed in the argument with given context, 
 						//Since we need to run this function based on context , we need to use call or apply
 						//For this example i am only using call
-						result = func.call(context, array[keys[i]]);						
+						memo = func.call(context, memo, keys[i]);	
 					}					
 					
-					if(array.constructor == Array){
-						if(returnResult == void 0){
-							returnResult = [];
-						} 
-						returnResult.push(result);
-
-					}else if(array.constructor == Object){
-						if(returnResult == void 0){
-							returnResult = {};
-						} 
-						returnResult[keys[i]] = result;
-					}
 				}
 
-				return returnResult;
+				return memo;
 			}
 
 
-			function callbackFunc(num){
+			function callbackFunc(memo, num){
 				
-				console.log(this[num]);	
-				return this[num] * 3;
+				console.log(this[num]);
+
+				//Update the memo only if value is divisible by 2
+
+				if(this[num] % 2 == 0){
+					if(memo.constructor === Array){
+						memo.push(this[num]);	//if memo was array, push array					
+					}else if(memo.constructor === Object){
+						memo[num] = this[num];	//if memo was object then add in object
+					}
+				}
+
+				return memo;	//memo will keep track of the reduced/updated array
 			}
 
 
 			//Calling Method and show output by passing Array								
-			$(".outputArray output").append(map(array, callbackFunc, context).toString());
+			$(".outputArray output").append(reduce(array, callbackFunc, [], contextArray).toString());
 
 
 			//Calling Method and Show Output by passing Object						
-			$(".outputObject output").append(JSON.stringify(map(arrayObject, callbackFunc, context)));
+			$(".outputObject output").append(JSON.stringify(reduce(arrayObject, callbackFunc, {}, contextObject)));
 
 
 			//Calling Method and show output by passing Array without Context
-			$(".outputArrayNoContext output").append(map(array, callbackFunc).toString());
+			$(".outputArrayNoContext output").append(reduce(array, callbackFunc, []).toString());
 
 
 			//Calling Method and Show Output by passing Object without Context
-			$(".outputObjectNoContext output").append(JSON.stringify(map(arrayObject, callbackFunc)));
+			$(".outputObjectNoContext output").append(JSON.stringify(reduce(arrayObject, callbackFunc, {})));
     	</pre>
 
     	<!-- @@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@ -->
@@ -125,11 +143,14 @@
 
     	<script>    		
     		var array = [4, 5, 6];
-    		var arrayObject = {one: 1, two: 2, three: 3};
-			var context = [0, 10, 20, 30, 40, 50, 60];
+    		var contextArray = [0, 10, 20, 30, 40, 50, 60];
 
-			//passing array/object , function, and Context
-			function map(array, func, context){								
+    		var arrayObject = {one: 1, two: 2, three: 3};			
+			var contextObject = {one: 10, two: 20, three: 33};
+
+			//passing array/object , function, memo, and Context
+			//memo will store the result values and return in the end
+			function reduce(array, func, memo, context){								
 				var keys = Object.keys(array);	//this will return an array of keys 
 				var result;
 				var returnResult;
@@ -138,57 +159,56 @@
 				//Since we need to support both array and object looping, we can loop on Object.keys(array)
 				//See below				
 				for(var i = 0; i < keys.length; i++){					
-
+					debugger;
 					//Since Context is optional can be undefined, and so checking for undefined, 					
 					if(context == void 0){
 						//If undefined then dont pass context, instead pass array as your context
-						result = func.call(array, keys[i]);						
+						memo = func.call(array, memo, keys[i]);						
 					}else{
 						//for each array value call the function passed in the argument with given context, 
 						//Since we need to run this function based on context , we need to use call or apply
 						//For this example i am only using call
-						result = func.call(context, array[keys[i]]);						
+						memo = func.call(context, memo, keys[i]);	
 					}					
 					
-					if(array.constructor == Array){
-						if(returnResult == void 0){
-							returnResult = [];
-						} 
-						returnResult.push(result);
-
-					}else if(array.constructor == Object){
-						if(returnResult == void 0){
-							returnResult = {};
-						} 
-						returnResult[keys[i]] = result;
-					}
 				}
 
-				return returnResult;
+				return memo;
 			}
 
 
-			function callbackFunc(num){
+			function callbackFunc(memo, num){
 				
-				console.log(this[num]);	
-				return this[num] * 3;
+				console.log(this[num]);
+
+				//Update the memo only if value is divisible by 2
+
+				if(this[num] % 2 == 0){
+					if(memo.constructor === Array){
+						memo.push(this[num]);	//if memo was array, push array					
+					}else if(memo.constructor === Object){
+						memo[num] = this[num];	//if memo was object then add in object
+					}
+				}
+
+				return memo;	//memo will keep track of the reduced/updated array
 			}
 
 
 			//Calling Method and show output by passing Array								
-			$(".outputArray output").append(map(array, callbackFunc, context).toString());
+			$(".outputArray output").append(reduce(array, callbackFunc, [], contextArray).toString());
 
 
 			//Calling Method and Show Output by passing Object						
-			$(".outputObject output").append(JSON.stringify(map(arrayObject, callbackFunc, context)));
+			$(".outputObject output").append(JSON.stringify(reduce(arrayObject, callbackFunc, {}, contextObject)));
 
 
 			//Calling Method and show output by passing Array without Context
-			$(".outputArrayNoContext output").append(map(array, callbackFunc).toString());
+			$(".outputArrayNoContext output").append(reduce(array, callbackFunc, []).toString());
 
 
 			//Calling Method and Show Output by passing Object without Context
-			$(".outputObjectNoContext output").append(JSON.stringify(map(arrayObject, callbackFunc)));
+			$(".outputObjectNoContext output").append(JSON.stringify(reduce(arrayObject, callbackFunc, {})));
 
     	</script>
 

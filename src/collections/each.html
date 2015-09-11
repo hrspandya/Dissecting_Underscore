@@ -16,8 +16,22 @@
 
 
     	<!-- @@@@@@@@@  THIS CODE IS FOR DISPLAY PURPOSE, UPDATE ONLY WHEN REAL CODE IS UPDATES ==== -->
-    	
+    	<pre>
+    		_.each(list, iteratee, [context])
+    	</pre>
+
     	<pre class="js">
+    		_.each([1, 2, 3], alert);
+			=&gt; alerts each number in turn...
+			_.each({one: 1, two: 2, three: 3}, alert);
+			=&gt; alerts each number value in turn...
+		</pre>
+
+		<div class="my_solution">
+			My Solution:
+		</div>
+
+    	<pre class="js solution">    		
 	    	var array = [4, 5, 6];
     		var arrayObject = {one: 1, two: 2, three: 3};
 			var context = ["0_0", "1_1", "2_2", "3_3", "4_4", "5_5", "6_6"];
@@ -130,6 +144,14 @@
 
 
 
+    	<div class="row">	
+			<div class="span9 columns">    
+				<h2>Comments Section</h2>
+			    <p>Feel free to comment on the post but keep it clean and on topic.</p>	
+				<div id="disqus_thread"></div>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+			</div>
+		</div>
 		
 
     	<script>    		
@@ -211,12 +233,24 @@
     	</script>
 
     	<script>
+    		/* * * CONFIGURATION VARIABLES * * */
+		    var disqus_shortname = 'harshpandya';
+		    
+		    /* * * DON'T EDIT BELOW THIS LINE * * */		    
+		    debugger;
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+
+
     		//CODE HIGHLIGHTER
     		//http://steamdev.com/snippet/  for themes
-
+    		debugger;
     		$("pre.js").snippet("javascript",appConfig.jsConfig);
 			$("pre.htmlCode").snippet("html",appConfig.htmlConfig);
-			$("pre.styles").snippet("css",appConfig.styleConfig);
+			$("pre.styles").snippet("css",appConfig.styleConfig);					    
     	</script>
+
     </body>
 </html>
