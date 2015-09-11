@@ -205,6 +205,7 @@
   	</div>
 
   	<script type="text/javascript" src="js/libs/jquery-2.1.4.min.js"></script>  	
+  	<script type="text/javascript" src="js/libs/embed.js"></script>  	
 	<script src="js/libs/jquery.snippet.js" type="text/javascript"></script>
 	
   	<script>
@@ -216,8 +217,9 @@
   		};
 
   		$("a").on("click", function(){
-  		  	var that = this;	
-  			$( ".right_container_detail" ).load($(this).attr("link-data") + ".html", function() {				
+  		  	var that = this;	  		  	
+  			$( ".right_container_detail" ).load($(this).attr("link-data") + ".html", function() {	
+  							
 			});
 			
 			$(".subTitle").html("" + $(that).text() + "");
