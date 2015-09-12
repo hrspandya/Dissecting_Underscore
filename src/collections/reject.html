@@ -33,10 +33,10 @@
     	<pre class="js">
 	    	var array = [4, 5, 6];
     		var arrayObject = {one: 1, two: 2, three: 3};
-			var context = [0, 10, 20, 30, 40, 50, 60];
+			var context = [0, 10, 20, 30, 40, 55, 60];
 
 			//passing array/object , function, and Context
-			function filter(array, func, context){								
+			function reject(array, func, context){								
 				var keys = Object.keys(array);	//this will return an array of keys 
 				var result;
 				var returnResult;
@@ -56,20 +56,30 @@
 						//For this example i am only using call
 						result = func.call(context, array[keys[i]]);						
 					}					
-					
-					if(result !== void 0){
+										
+					if(result.isMatched === false){	//if not matched
 						if(array.constructor == Array){
 							if(returnResult == void 0){
 								returnResult = [];
 							} 
-							returnResult.push(result);
+							returnResult.push(result.value);
 
 						}else if(array.constructor == Object){
 							if(returnResult == void 0){
 								returnResult = {};
 							} 
-							returnResult[keys[i]] = result;
+							returnResult[keys[i]] = result.value;
 						}
+					}
+				}
+
+				//in case if nothing is matched than returnResult will be undefined, 
+				//if undefined, return empty array
+				if(returnResult === void 0){
+					if(array.constructor == Array){
+						returnResult = [];		
+					}else if(array.constructor == Object){
+						returnResult = {};
 					}
 				}
 
@@ -82,27 +92,33 @@
 				console.log(this[num]);	
 				
 				if(this[num] % 2 === 0){
-					return this[num];
+					return {
+						"value" : this[num],
+						"isMatched" : true		
+					};
 				}
 
-				return undefined;
+				return {
+						"value" : this[num],
+						"isMatched" : false		
+				};
 			}
 
 
 			//Calling Method and show output by passing Array								
-			$(".outputArray output").append(filter(array, callbackFunc, context).toString());
+			$(".outputArray output").append(reject(array, callbackFunc, context).toString());
 
 
 			//Calling Method and Show Output by passing Object						
-			$(".outputObject output").append(JSON.stringify(filter(arrayObject, callbackFunc, context)));
+			$(".outputObject output").append(JSON.stringify(reject(arrayObject, callbackFunc, context)));
 
 
 			//Calling Method and show output by passing Array without Context
-			$(".outputArrayNoContext output").append(filter(array, callbackFunc).toString());
+			$(".outputArrayNoContext output").append(reject(array, callbackFunc).toString());
 
 
 			//Calling Method and Show Output by passing Object without Context
-			$(".outputObjectNoContext output").append(JSON.stringify(filter(arrayObject, callbackFunc)));
+			$(".outputObjectNoContext output").append(JSON.stringify(reject(arrayObject, callbackFunc)));
     	</pre>
 
     	<!-- @@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@ -->
@@ -153,10 +169,10 @@
     	<script>    		
     		var array = [4, 5, 6];
     		var arrayObject = {one: 1, two: 2, three: 3};
-			var context = [0, 10, 20, 30, 40, 50, 60];
+			var context = [0, 10, 20, 30, 40, 55, 60];
 
 			//passing array/object , function, and Context
-			function filter(array, func, context){								
+			function reject(array, func, context){								
 				var keys = Object.keys(array);	//this will return an array of keys 
 				var result;
 				var returnResult;
@@ -176,20 +192,30 @@
 						//For this example i am only using call
 						result = func.call(context, array[keys[i]]);						
 					}					
-					
-					if(result !== void 0){
+										
+					if(result.isMatched === false){	//if not matched
 						if(array.constructor == Array){
 							if(returnResult == void 0){
 								returnResult = [];
 							} 
-							returnResult.push(result);
+							returnResult.push(result.value);
 
 						}else if(array.constructor == Object){
 							if(returnResult == void 0){
 								returnResult = {};
 							} 
-							returnResult[keys[i]] = result;
+							returnResult[keys[i]] = result.value;
 						}
+					}
+				}
+
+				//in case if nothing is matched than returnResult will be undefined, 
+				//if undefined, return empty array
+				if(returnResult === void 0){
+					if(array.constructor == Array){
+						returnResult = [];		
+					}else if(array.constructor == Object){
+						returnResult = {};
 					}
 				}
 
@@ -202,27 +228,33 @@
 				console.log(this[num]);	
 				
 				if(this[num] % 2 === 0){
-					return this[num];
+					return {
+						"value" : this[num],
+						"isMatched" : true		
+					};
 				}
 
-				return undefined;
+				return {
+						"value" : this[num],
+						"isMatched" : false		
+				};
 			}
 
 
 			//Calling Method and show output by passing Array								
-			$(".outputArray output").append(filter(array, callbackFunc, context).toString());
+			$(".outputArray output").append(reject(array, callbackFunc, context).toString());
 
 
 			//Calling Method and Show Output by passing Object						
-			$(".outputObject output").append(JSON.stringify(filter(arrayObject, callbackFunc, context)));
+			$(".outputObject output").append(JSON.stringify(reject(arrayObject, callbackFunc, context)));
 
 
 			//Calling Method and show output by passing Array without Context
-			$(".outputArrayNoContext output").append(filter(array, callbackFunc).toString());
+			$(".outputArrayNoContext output").append(reject(array, callbackFunc).toString());
 
 
 			//Calling Method and Show Output by passing Object without Context
-			$(".outputObjectNoContext output").append(JSON.stringify(filter(arrayObject, callbackFunc)));
+			$(".outputObjectNoContext output").append(JSON.stringify(reject(arrayObject, callbackFunc)));
 
     	</script>
 

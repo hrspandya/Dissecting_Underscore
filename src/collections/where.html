@@ -1,0 +1,231 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />       
+        <title>Dissecting Underscore,  Underscore Explained</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+    </head>
+
+    <body>    	    
+
+
+    	<!-- @@@@@@@@@  THIS CODE IS FOR DISPLAY PURPOSE, UPDATE ONLY WHEN REAL CODE IS UPDATES ==== -->
+    	<pre>
+    		_.where(list, properties) 
+    	</pre>
+
+    	<pre class="js">
+    		_.where(listOfPlays, {author: "Shakespeare", year: 1611});
+			=> [{title: "Cymbeline", author: "Shakespeare", year: 1611},
+			    {title: "The Tempest", author: "Shakespeare", year: 1611}]
+		</pre>
+
+		<div class="my_solution">
+			My Solution:
+		</div>
+
+    	<pre class="js solution">    		
+	    	var list = [
+    			{
+    				id : 1,
+    				firsname : "john",
+    				lastname : "snow",
+    				isEmployee : true    				
+    			},
+    			{
+    				id : 2,
+    				firsname : "tim",
+    				lastname : "tong",
+    				isEmployee : false
+    			},
+    			{
+    				id : 3,
+    				firsname : "mad",
+    				lastname : "max",
+    				isEmployee : true
+    			}
+    		];
+
+    		function where(list, properties){
+    			var result = [];    			
+    			//Loop through list
+    			for(var i = 0; i < list.length; i++){
+
+    				var isMatched = false;
+    				//Loop through properties 
+    				for(var key in properties){
+    					if(properties.hasOwnProperty(key)){
+    						//Check if key property exist in the list item
+    						if(list[i][key] !== void 0){
+    							//check if values also match
+    							if(list[i][key] === properties[key]){
+    								isMatched = true;    								
+    							}else{
+    								isMatched = false;    								
+    								break;	//if not matched then break for loop and matched = false
+    							}
+    						}
+    					}
+    				}
+
+    				if(isMatched){
+						result.push(list[i]);
+    				}
+
+    			}
+
+
+    			return result;
+    		}
+
+
+    		//Find john snow, 
+    		var result1 = where(list, { firsname : "john", lastname : "snow" });
+
+
+			//Find employees = true, 
+    		var result2 = where(list, { isEmployee : true });
+    		
+    	</pre>
+
+    	<!-- @@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+
+    	<section class="result1">
+    		<strong>Output :</strong>
+    		<output>
+    		</output>
+		</section>
+
+
+		<section class="result2">
+    		<strong>Output :</strong>
+    		<output>
+    		</output>
+		</section>
+
+
+
+
+    	<div class="row">	
+			<div class="span9 columns">    
+				<h2>Comments Section</h2>
+			    <p>Feel free to comment on the post but keep it clean and on topic.</p>	
+				<div id="disqus_thread"></div>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+			</div>
+		</div>
+		
+
+    	<script>    		
+    		
+    		var list = [
+    			{
+    				id : 1,
+    				firsname : "john",
+    				lastname : "snow",
+    				isEmployee : true    				
+    			},
+    			{
+    				id : 2,
+    				firsname : "tim",
+    				lastname : "tong",
+    				isEmployee : false
+    			},
+    			{
+    				id : 3,
+    				firsname : "mad",
+    				lastname : "max",
+    				isEmployee : true
+    			}
+    		];
+
+    		function where(list, properties){
+    			var result = [];    			
+    			//Loop through list
+    			for(var i = 0; i < list.length; i++){
+
+    				var isMatched = false;
+    				//Loop through properties 
+    				for(var key in properties){
+    					if(properties.hasOwnProperty(key)){
+    						//Check if key property exist in the list item
+    						if(list[i][key] !== void 0){
+    							//check if values also match
+    							if(list[i][key] === properties[key]){
+    								isMatched = true;    								
+    							}else{
+    								isMatched = false;    								
+    								break;	//if not matched then break for loop and matched = false
+    							}
+    						}
+    					}
+    				}
+
+    				if(isMatched){
+						result.push(list[i]);
+    				}
+
+    			}
+
+
+    			return result;
+    		}
+
+
+    		//Find john snow, 
+    		var result1 = where(list, { firsname : "john", lastname : "snow" });
+
+
+			//Find employees = true, 
+    		var result2 = where(list, { isEmployee : true });
+
+
+
+    		$(".result1 output").append("[");
+    		for(var i = 0; i < result1.length; i++){
+    			$(".result1 output").append("<div>" + JSON.stringify(result1[i]) + "</div>");	
+    		}
+    		$(".result1 output").append("]");
+
+    		$(".result2 output").append("[");
+    		for(var i = 0; i < result2.length; i++){
+    			$(".result2 output").append("<div>" + JSON.stringify(result2[i]) + "</div>");	
+    		}
+    		$(".result2 output").append("]");
+
+
+    	</script>
+
+    	<script>
+    		/* * * CONFIGURATION VARIABLES * * */
+		    var disqus_shortname = 'harshpandya';		    
+		    /* * * DON'T EDIT BELOW THIS LINE * * */		    			
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);	        
+	        DISQUS.reset({
+			  reload: true,
+			  config: function () {  
+			    this.page.identifier = window.location.hash.replace("#", "");
+			    this.page.url = window.location.href.replace("#", "#!");
+			  }
+			});
+
+
+    		//CODE HIGHLIGHTER
+    		//http://steamdev.com/snippet/  for themes    		
+    		$("pre.js").snippet("javascript",appConfig.jsConfig);
+			$("pre.htmlCode").snippet("html",appConfig.htmlConfig);
+			$("pre.styles").snippet("css",appConfig.styleConfig);					    
+    	</script>
+
+    </body>
+</html>
