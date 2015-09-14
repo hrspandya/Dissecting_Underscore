@@ -184,6 +184,13 @@ ul {
     color: grey;
 }
 
+.note{
+  font-family: sans-serif;  
+  font-weight: lighter;
+  padding: 10px;
+  color: red; 
+}
+
 .subTitle {
     font-size: 2em;
     font-weight: lighter;

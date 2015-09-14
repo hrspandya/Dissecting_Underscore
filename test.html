@@ -10,73 +10,20 @@ Test page
 <script type="text/javascript" src="js/libs/underscore-min.js"></script>  	
 
 <script>
-	var goal  = {
+    
+    debugger;
 
-    {
-        "category" : "education",
-        "title" : "Charlie University",
-        "description" : "Lorem ipsum dolor sit amet",
-        "date" : "01/03/2020",
-        "value" : 50000,
-        "achievability" : 3,
-        "experimental_achievability": 3,
-        "suggested": false,
-        "accounts": [1, 2, 3],
-        "articles": [],
-        "related_goals": [],
-        "id":"1"
-    },
-    {
-        "category" : "education",
-        "title" : "Charlie University",
-        "description" : "Lorem ipsum dolor sit amet",
-        "date" : "01/03/2020",
-        "value" : 50000,
-        "achievability" : 3,
-        "experimental_achievability": 3,
-        "suggested": false,
-        "accounts": [2, 3, 4],
-        "articles": [],
-        "related_goals": [],
-        "id":"2"
-    },
-    {
-        "category" : "education",
-        "title" : "Charlie University",
-        "description" : "Lorem ipsum dolor sit amet",
-        "date" : "01/03/2020",
-        "value" : 50000,
-        "achievability" : 3,
-        "experimental_achievability": 3,
-        "suggested": true,
-        "accounts": [4, 5, 6],
-        "articles": [],
-        "related_goals": [],
-        "id":"3"
-    },
-    {
-        "category" : "education",
-        "title" : "Charlie University",
-        "description" : "Lorem ipsum dolor sit amet",
-        "date" : "01/03/2020",
-        "value" : 50000,
-        "achievability" : 3,
-        "experimental_achievability": 3,
-        "suggested": false,
-        "accounts": [1, 2, 4],
-        "articles": [],
-        "related_goals": [],
-        "id":"4"
-    }
-};
+    var stooges = [
+                {name: 'moe', age: 40, test : [{name : 'sam'}]}, 
+                {name: 'larry', age: 40}, 
+                {name: 'curly', age: 60}
+            ];
 
+    var result = _.countBy(stooges, function(num) {
+      return num % 2 == 0 ? 'even': 'odd';
+    });
 
-
-debugger;
-var filteredGoal = _.where(goal, {suggested: true});
-
-alert(filteredGoal);
-
+    debugger;
 
 
 

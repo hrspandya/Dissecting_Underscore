@@ -38,12 +38,17 @@
 			function contains(array, value, fromIndex){								
 				var keys = Object.keys(array);	//this will return an array of keys 
 				var isContains = false;
+				var startIndex = fromIndex;
+				
+				if(fromIndex === void 0){
+					startIndex = 0;
+				}
 
 				//You can always loop through array like: for(var i = 0; i < array.length; i++) 
 				//But what if you want to use same method for object as well,
 				//Since we need to support both array and object looping, we can loop on Object.keys(array)
 				//See below				
-				for(var i = 0; i < keys.length; i++){					
+				for(var i = startIndex; i < keys.length; i++){					
 															
 					if(array.constructor === Array){
 						if(array[keys[i]] === value){						
@@ -67,7 +72,7 @@
 
 
 			//Calling Method and Show Output by passing Object						
-			$(".outputObject output").append(JSON.stringify(contains(arrayObject, "one", 0)));
+			$(".outputObject output").append(JSON.stringify(contains(arrayObject, "one", 2)));
 
 
 			//Calling Method and show output by passing Array without Context
@@ -131,12 +136,17 @@
 			function contains(array, value, fromIndex){								
 				var keys = Object.keys(array);	//this will return an array of keys 
 				var isContains = false;
+				var startIndex = fromIndex;
+				
+				if(fromIndex === void 0){
+					startIndex = 0;
+				}
 
 				//You can always loop through array like: for(var i = 0; i < array.length; i++) 
 				//But what if you want to use same method for object as well,
 				//Since we need to support both array and object looping, we can loop on Object.keys(array)
 				//See below				
-				for(var i = 0; i < keys.length; i++){					
+				for(var i = startIndex; i < keys.length; i++){					
 															
 					if(array.constructor === Array){
 						if(array[keys[i]] === value){						
@@ -160,7 +170,7 @@
 
 
 			//Calling Method and Show Output by passing Object						
-			$(".outputObject output").append(JSON.stringify(contains(arrayObject, "one", 0)));
+			$(".outputObject output").append(JSON.stringify(contains(arrayObject, "one", 2)));
 
 
 			//Calling Method and show output by passing Array without Context
@@ -173,7 +183,8 @@
     	</script>
 
     	<script>
-
+    		$( "body" ).scrollTop( 0 );
+    		
     		/* * * CONFIGURATION VARIABLES * * */
 		    var disqus_shortname = 'harshpandya';		    
 		    /* * * DON'T EDIT BELOW THIS LINE * * */		    			

@@ -18,26 +18,31 @@
     	<!-- @@@@@@@@@  THIS CODE IS FOR DISPLAY PURPOSE, UPDATE ONLY WHEN REAL CODE IS UPDATES ==== -->
     	
     	<pre>
-    		_.every(list, [predicate], [context])
+    		_.indexBy(list, iteratee, [context]) 
     	</pre>
 
-    	<pre class="js">
-    		_.every([true, 1, null, 'yes'], _.identity);
-			=> false
+    	<pre class="">
+    		var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];
+		_.indexBy(stooges, 'age');
+		=> {
+		  "40": {name: 'moe', age: 40},
+		  "50": {name: 'larry', age: 50},
+		  "60": {name: 'curly', age: 60}
+		}
 		</pre>
 
 		<div class="my_solution">
-			See my Solution on <strong>reject</strong> for assistance.
+			See my Solution on <strong>groupBy</strong> for assistance.
 		</div>
 		
-    	
+    	</pre>
 
     	<!-- @@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@ -->
 
 
 
     	
-    	
+
 
 		<div class="row">	
 			<div class="span9 columns">    
@@ -48,10 +53,16 @@
 			</div>
 		</div>
 
+		
+
+    	<script>    		
+    		
+
+    	</script>
 
     	<script>
 			$( "body" ).scrollTop( 0 );
-			
+			    	
     		/* * * CONFIGURATION VARIABLES * * */
 		    var disqus_shortname = 'harshpandya';		    
 		    /* * * DON'T EDIT BELOW THIS LINE * * */		    			
@@ -65,6 +76,7 @@
 			    this.page.url = window.location.href.replace("#", "#!");
 			  }
 			});
+
 
     		//CODE HIGHLIGHTER
     		//http://steamdev.com/snippet/  for themes
