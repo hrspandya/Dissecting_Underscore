@@ -184,6 +184,10 @@ ul {
     color: grey;
 }
 
+section output {
+    letter-spacing: 5px;
+}
+
 .subTitle {
     font-size: 2em;
     font-weight: lighter;
