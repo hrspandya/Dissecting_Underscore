@@ -1,0 +1,44 @@
+<html>
+
+<head>
+</head>
+
+<body>
+Test page
+
+
+<script type="text/javascript" src="js/libs/underscore-min.js"></script>  	
+
+<script>
+<<<<<<< HEAD
+	
+
+debugger;
+var filteredGoal = _.toArray({"one" : 1, "two" : 2, "three" : 3});
+
+alert(filteredGoal);
+
+=======
+    
+    debugger;
+
+    var stooges = [
+                {name: 'moe', age: 40, test : [{name : 'sam'}]}, 
+                {name: 'larry', age: 40}, 
+                {name: 'curly', age: 60}
+            ];
+
+    var result = _.countBy(stooges, function(num) {
+      return num % 2 == 0 ? 'even': 'odd';
+    });
+
+    debugger;
+>>>>>>> parent of ced248a... Revert "more methods added"
+
+
+
+</script>
+
+</body>
+
+</html>

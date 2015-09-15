@@ -18,26 +18,56 @@
     	<!-- @@@@@@@@@  THIS CODE IS FOR DISPLAY PURPOSE, UPDATE ONLY WHEN REAL CODE IS UPDATES ==== -->
     	
     	<pre>
-    		_.every(list, [predicate], [context])
+    		_.shuffle(list) 
     	</pre>
 
     	<pre class="js">
-    		_.every([true, 1, null, 'yes'], _.identity);
-			=> false
+    		_.shuffle([1, 2, 3, 4, 5, 6]);
+			=> [4, 1, 6, 3, 5, 2]
 		</pre>
 
 		<div class="my_solution">
-			See my Solution on <strong>reject</strong> for assistance.
+			My Solution:
 		</div>
 		
-    	
+    	<pre class="js">
+	    	var array = [4, 5, 6];
+    		
+			//passing array
+			function shuffle(array){												
+				debugger;
+				if(array.constructor === Array){
+					for(var i = 0; i < array.length; i++){
+						var randomIndex = Math.floor(Math.random() * array.length);
+						//replace values 
+						var temp = array[i];
+						array[i] = array[randomIndex];
+						array[randomIndex] = temp;
+					}
+				}
+
+				return array;	//return array which has been shuffled
+			}
+
+
+			//Calling Method and show output by passing Array								
+			$(".outputArray output").append(shuffle(array).toString());
+    	</pre>
 
     	<!-- @@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@ -->
 
 
 
-    	
-    	
+    	<section class="outputArray">
+    		<strong>Output for Array:</strong>
+    		<output>
+    		</output>
+		</section>
+
+		<br><br>
+		
+		
+
 
 		<div class="row">	
 			<div class="span9 columns">    
@@ -48,10 +78,37 @@
 			</div>
 		</div>
 
+		
+
+    	<script>    		
+    		var array = [4, 5, 6];
+    		
+			//passing array
+			function shuffle(array){												
+				debugger;
+				if(array.constructor === Array){
+					for(var i = 0; i < array.length; i++){
+						var randomIndex = Math.floor(Math.random() * array.length);
+						//replace values 
+						var temp = array[i];
+						array[i] = array[randomIndex];
+						array[randomIndex] = temp;
+					}
+				}
+
+				return array;	//return array which has been shuffled
+			}
+
+
+			//Calling Method and show output by passing Array								
+			$(".outputArray output").append(shuffle(array).toString());
+
+
+    	</script>
 
     	<script>
 			$( "body" ).scrollTop( 0 );
-			
+			    	
     		/* * * CONFIGURATION VARIABLES * * */
 		    var disqus_shortname = 'harshpandya';		    
 		    /* * * DON'T EDIT BELOW THIS LINE * * */		    			
@@ -65,6 +122,7 @@
 			    this.page.url = window.location.href.replace("#", "#!");
 			  }
 			});
+
 
     		//CODE HIGHLIGHTER
     		//http://steamdev.com/snippet/  for themes

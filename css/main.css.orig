@@ -184,15 +184,16 @@ ul {
     color: grey;
 }
 
+<<<<<<< HEAD
 section output {
     letter-spacing: 5px;
-}
-
+=======
 .note{
   font-family: sans-serif;  
   font-weight: lighter;
   padding: 10px;
   color: red; 
+>>>>>>> parent of ced248a... Revert "more methods added"
 }
 
 .subTitle {
