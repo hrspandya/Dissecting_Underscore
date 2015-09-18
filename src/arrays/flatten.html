@@ -34,29 +34,30 @@
 		</div>
 		
     	<pre class="js">
-	    	var array1 = [1, "", null, false, undefined, 2, 3, 4];
+	    	var array1 = [[1], [[2, 6]], [[[3, 5]]], [[[[4, 8]]]] ];
         
 
-            function compact(list){
+            function flatten(list, shallow){
 
-                var resultArray = [];
+                var resultArray = [];                
 
+                if(shallow === void 0){
+                    shallow = false;
+                }
+
+                debugger;
                 if(list.constructor === Array){
 
                     for(var i = 0; i < list.length; i++){
-                        
-                        if(list[i] == void 0 
-                            || list[i] == false 
-                            || list[i] == null
-                            || list[i] == 0 
-                            || list[i] == ""
-                            || isNaN(list[i])){
+                        if(list[i].constructor === Array && shallow === false){
+                            var result = flatten(list[i], shallow);
 
-                            //Do nothing
+                            //Remember to concat the result with your resultArray 
+                            //because everytime flatten is called again , resultArray is [], so keeping track of them
+                            resultArray = resultArray.concat(result);
                         }else{
                             resultArray.push(list[i]);
                         }
-
                     }
 
                 }
@@ -67,7 +68,9 @@
 
 
             //Calling Method and show output by passing Array                               
-            $(".result1 output").append(compact(array1).toString());
+            $(".result1 output").append(JSON.stringify(flatten(array1)).toString());
+
+            $(".result2 output").append(JSON.stringify(flatten(array1, true)).toString());
 
 
     	</pre>
