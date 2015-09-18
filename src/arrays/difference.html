@@ -1,0 +1,158 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />       
+        <title>Dissecting Underscore,  Underscore Explained</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+    </head>
+
+    <body>    	    
+
+
+    	<!-- @@@@@@@@@  THIS CODE IS FOR DISPLAY PURPOSE, UPDATE ONLY WHEN REAL CODE IS UPDATES ==== -->
+    	
+    	<pre>
+    		_.difference(array, *others) 
+    	</pre>
+
+    	<pre class="">
+    		_.difference([1, 2, 3, 4, 5], [5, 2, 10]);
+                => [1, 3, 4]
+		</pre>
+
+		<div class="my_solution">
+			My Solution:
+		</div>
+		
+    	<pre class="js">
+	    	
+            function difference(list){
+
+                var resultArray = [];                                
+                var argsMap = {};
+                var concatedArrays = [];
+                
+                //loop through arguments but skip first, since list is our input array
+                for(var i = 1; i < arguments.length; i++){
+                    concatedArrays = concatedArrays.concat(arguments[i]);
+                }
+
+                //loop through concated arrays and put them in the map
+                for(var j = 0; j < concatedArrays.length; j++){  
+                    argsMap[concatedArrays[j]] = concatedArrays[j];
+                }
+
+                //Now loop through your list and find difference
+                for(var k = 0; k < list.length; k++){
+                    if(list[k] !== argsMap[list[k]]){
+                        resultArray.push(list[k]);
+                    }
+                }
+
+                return resultArray;
+
+            }
+
+
+            //Calling Method and show output by passing Array                               
+            $(".result1 output").append(JSON.stringify(difference([1, 2, 3, 4, 5], [5, 2, 10], [2, 4, 5])).toString());
+
+
+    	</pre>
+
+    	<!-- @@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+
+    	<section class="result1">
+    		<strong>Output for Array:</strong>
+    		<output>
+    		</output>
+		</section>
+
+		<br><br>
+		
+        
+		
+
+
+		<div class="row">	
+			<div class="span9 columns">    
+				<h2>Comments Section</h2>
+			    <p>Feel free to comment on the post but keep it clean and on topic.</p>	
+				<div id="disqus_thread"></div>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+			</div>
+		</div>
+
+		
+
+    	<script>    		
+				
+    		function difference(list){
+
+                var resultArray = [];                                
+                var argsMap = {};
+                var concatedArrays = [];
+                
+                //loop through arguments but skip first
+                for(var i = 1; i < arguments.length; i++){
+                    concatedArrays = concatedArrays.concat(arguments[i]);
+                }
+
+                //loop through concated arrays and put them in the map
+                for(var j = 0; j < concatedArrays.length; j++){  
+                    argsMap[concatedArrays[j]] = concatedArrays[j];
+                }
+
+                //Now loop through your list and find difference
+                for(var k = 0; k < list.length; k++){
+                    if(list[k] !== argsMap[list[k]]){
+                        resultArray.push(list[k]);
+                    }
+                }
+
+                return resultArray;
+
+    		}
+
+
+			//Calling Method and show output by passing Array								
+			$(".result1 output").append(JSON.stringify(difference([1, 2, 3, 4, 5], [5, 2, 10], [2, 4, 5])).toString());
+
+
+    	</script>
+
+    	<script>
+			$( "body" ).scrollTop( 0 );
+			    	
+    		/* * * CONFIGURATION VARIABLES * * */
+		    var disqus_shortname = 'harshpandya';		    
+		    /* * * DON'T EDIT BELOW THIS LINE * * */		    			
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);	        
+	        DISQUS.reset({
+			  reload: true,
+			  config: function () {  
+			    this.page.identifier = window.location.hash.replace("#", "");
+			    this.page.url = window.location.href.replace("#", "#!");
+			  }
+			});
+
+
+    		//CODE HIGHLIGHTER
+    		//http://steamdev.com/snippet/  for themes
+
+    		$("pre.js").snippet("javascript",appConfig.jsConfig);
+			$("pre.htmlCode").snippet("html",appConfig.htmlConfig);
+			$("pre.styles").snippet("css",appConfig.styleConfig);
+    	</script>
+    </body>
+</html>
