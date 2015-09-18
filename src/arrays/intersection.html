@@ -1,0 +1,192 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />       
+        <title>Dissecting Underscore,  Underscore Explained</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+    </head>
+
+    <body>    	    
+
+
+    	<!-- @@@@@@@@@  THIS CODE IS FOR DISPLAY PURPOSE, UPDATE ONLY WHEN REAL CODE IS UPDATES ==== -->
+    	
+    	<pre>
+    		_.intersection(*arrays) 
+    	</pre>
+
+    	<pre class="">
+    		_.intersection([1, 2, 3], [101, 2, 1, 10], [2, 1]);
+                => [1, 2]
+		</pre>
+
+		<div class="my_solution">
+			My Solution:
+		</div>
+		
+    	<pre class="js">
+	    	  
+            function intersection(list){
+
+                var resultArray = [];                                
+                var argsMap = {};
+                
+                //Make sure arguments length is more than 0, otherwise return []                                  
+                if(arguments.length > 0){
+
+                    for(var i = 0; i < list.length; i++){
+
+                        //Loop through arguments array and make sure each arg is an array
+                        if(arguments[i].constructor === Array){
+
+                            for(var k = 0; k < arguments[i].length; k++){
+
+                                //since we are looking for intersection, we need to make sure that count reaches to (arguemnts.length - 1)
+                                //which means every array has the value we are looking for 
+                                if(argsMap[arguments[i][k]] === arguments.length - 1){
+                                    //if all arrays have the value than add it to result Array
+                                    resultArray.push(arguments[i][k]);
+                                }
+                                
+                                //when map value is undefined make it 1
+                                if(argsMap[arguments[i][k]] === void 0){
+                                    argsMap[arguments[i][k]] = 1
+                                }else{
+                                    //otherwise increment
+                                    argsMap[arguments[i][k]] = argsMap[arguments[i][k]] + 1;
+                                }
+
+                            }
+                        }
+                    }
+
+                }else{
+
+                    return list;
+
+                }
+
+                return resultArray;
+
+            }
+
+
+            //Calling Method and show output by passing Array                               
+            $(".result1 output").append(JSON.stringify(intersection([1, 2, 3], [101, 2, 1, 10], [2, 1])).toString());
+
+
+    	</pre>
+
+    	<!-- @@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+
+    	<section class="result1">
+    		<strong>Output for Array:</strong>
+    		<output>
+    		</output>
+		</section>
+
+		<br><br>
+		
+        
+		
+
+
+		<div class="row">	
+			<div class="span9 columns">    
+				<h2>Comments Section</h2>
+			    <p>Feel free to comment on the post but keep it clean and on topic.</p>	
+				<div id="disqus_thread"></div>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+			</div>
+		</div>
+
+		
+
+    	<script>    		
+				
+    		function intersection(list){
+
+                var resultArray = [];                                
+                var argsMap = {};
+                
+                //Make sure arguments length is more than 0, otherwise return []                                  
+                if(arguments.length > 0){
+
+                    for(var i = 0; i < list.length; i++){
+
+                        //Loop through arguments array and make sure each arg is an array
+                        if(arguments[i].constructor === Array){
+
+                            for(var k = 0; k < arguments[i].length; k++){
+
+                                //since we are looking for intersection, we need to make sure that count reaches to (arguemnts.length - 1)
+                                //which means every array has the value we are looking for 
+                                if(argsMap[arguments[i][k]] === arguments.length - 1){
+                                    //if all arrays have the value than add it to result Array
+                                    resultArray.push(arguments[i][k]);
+                                }
+                                
+                                //when map value is undefined make it 1
+                                if(argsMap[arguments[i][k]] === void 0){
+                                    argsMap[arguments[i][k]] = 1
+                                }else{
+                                    //otherwise increment
+                                    argsMap[arguments[i][k]] = argsMap[arguments[i][k]] + 1;
+                                }
+
+                            }
+                        }
+                    }
+
+                }else{
+
+                    return list;
+
+                }
+
+                return resultArray;
+
+    		}
+
+
+			//Calling Method and show output by passing Array								
+			$(".result1 output").append(JSON.stringify(intersection([1, 2, 3], [101, 2, 1, 10], [2, 1])).toString());
+
+
+    	</script>
+
+    	<script>
+			$( "body" ).scrollTop( 0 );
+			    	
+    		/* * * CONFIGURATION VARIABLES * * */
+		    var disqus_shortname = 'harshpandya';		    
+		    /* * * DON'T EDIT BELOW THIS LINE * * */		    			
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);	        
+	        DISQUS.reset({
+			  reload: true,
+			  config: function () {  
+			    this.page.identifier = window.location.hash.replace("#", "");
+			    this.page.url = window.location.href.replace("#", "#!");
+			  }
+			});
+
+
+    		//CODE HIGHLIGHTER
+    		//http://steamdev.com/snippet/  for themes
+
+    		$("pre.js").snippet("javascript",appConfig.jsConfig);
+			$("pre.htmlCode").snippet("html",appConfig.htmlConfig);
+			$("pre.styles").snippet("css",appConfig.styleConfig);
+    	</script>
+    </body>
+</html>
