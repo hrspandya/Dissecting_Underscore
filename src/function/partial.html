@@ -1,0 +1,196 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />       
+        <title>Dissecting Underscore,  Underscore Explained</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+    </head>
+
+    <body>    	    
+
+
+    	<!-- @@@@@@@@@  THIS CODE IS FOR DISPLAY PURPOSE, UPDATE ONLY WHEN REAL CODE IS UPDATES ==== -->
+    	
+    	<pre>
+    		_.partial(function, *arguments) 
+    	</pre>
+
+    	<pre class="">
+    		var subtract = function(a, b) { return b - a; };
+                sub5 = _.partial(subtract, 5);
+                sub5(20);
+                => 15
+
+                // Using a placeholder
+                subFrom20 = _.partial(subtract, _, 20);
+                subFrom20(5);
+                => 15
+		</pre>
+
+		<div class="my_solution">
+			My Solution:
+		</div>
+		
+    	<pre class="js">
+	    	
+            function partial(func){
+
+                //get arguments 
+                var argsArray = Array.prototype.slice.call(arguments, 1);                
+                var _passed = false;
+                var arg1;               
+
+                if(argsArray.length > 0){
+                    if(argsArray[0] == "_"){
+                        _passed = true; 
+                        arg1 = argsArray[1];
+                    }else{
+                        arg1 = argsArray[0];
+                        _passed = false;
+                    }
+                }else{
+                    return undefined;
+                }
+
+                return function(arg){
+                    var arg2 = arg;
+                    
+                    if(_passed){
+                        return func.apply(null, [arg2, arg1]);
+                    }else{
+                        return func.apply(null, [arg1, arg2]);
+                    }                    
+                };
+            }
+
+
+            var subtract = function(a, b) { 
+                return b - a; 
+            };
+
+            sub5 =  partial(subtract, 5);
+            $(".result1 output").append(sub5(20));
+            
+
+            // Using a placeholder
+            subFrom20 = partial(subtract, "_", 20);
+            $(".result2 output").append(subFrom20(5));
+
+
+    	</pre>
+
+    	<!-- @@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+
+    	<section class="result1">
+    		<strong>Output for Array:</strong>
+    		<output>
+    		</output>
+		</section>
+
+		<br><br>
+
+        <section class="result2">
+            <strong>Output for Array:</strong>
+            <output>
+            </output>
+        </section>
+
+        <br><br>
+		
+        
+		
+
+
+		<div class="row">	
+			<div class="span9 columns">    
+				<h2>Comments Section</h2>
+			    <p>Feel free to comment on the post but keep it clean and on topic.</p>	
+				<div id="disqus_thread"></div>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+			</div>
+		</div>
+
+		
+
+    	<script>    		
+
+			function partial(func){
+
+                //get arguments 
+                var argsArray = Array.prototype.slice.call(arguments, 1);                
+                var _passed = false;
+                var arg1;               
+
+                if(argsArray.length > 0){
+                    if(argsArray[0] == "_"){
+                        _passed = true; 
+                        arg1 = argsArray[1];
+                    }else{
+                        arg1 = argsArray[0];
+                        _passed = false;
+                    }
+                }else{
+                    return undefined;
+                }
+
+                return function(arg){
+                    var arg2 = arg;
+                    
+                    if(_passed){
+                        return func.apply(null, [arg2, arg1]);
+                    }else{
+                        return func.apply(null, [arg1, arg2]);
+                    }                    
+                };
+            }
+
+
+            var subtract = function(a, b) { 
+                return b - a; 
+            };
+
+            sub5 =  partial(subtract, 5);
+            $(".result1 output").append(sub5(20));
+            
+
+            // Using a placeholder
+            subFrom20 = partial(subtract, "_", 20);
+            $(".result2 output").append(subFrom20(5));
+
+    	</script>
+
+    	<script>
+			$( "body" ).scrollTop( 0 );
+			    	
+    		/* * * CONFIGURATION VARIABLES * * */
+		    var disqus_shortname = 'harshpandya';		    
+		    /* * * DON'T EDIT BELOW THIS LINE * * */		    			
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);	        
+	        DISQUS.reset({
+			  reload: true,
+			  config: function () {  
+			    this.page.identifier = window.location.hash.replace("#", "");
+			    this.page.url = window.location.href.replace("#", "#!");
+			  }
+			});
+
+
+    		//CODE HIGHLIGHTER
+    		//http://steamdev.com/snippet/  for themes
+
+    		$("pre.js").snippet("javascript",appConfig.jsConfig);
+			$("pre.htmlCode").snippet("html",appConfig.htmlConfig);
+			$("pre.styles").snippet("css",appConfig.styleConfig);
+    	</script>
+    </body>
+</html>
