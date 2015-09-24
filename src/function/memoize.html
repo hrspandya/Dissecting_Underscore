@@ -34,18 +34,17 @@
     	<pre class="js">
 	    	
            function memoize(func){
-
-                var memo = {};
-                var args = arguments;
+                            
+                var memo = {};               
 
                 return function(){
-
+                    
                     var argArray = Array.prototype.slice.call(arguments);
 
                     if(argArray in memo){
                         return memo[argArray];
                     }else{
-                        memo[argArray] = func.apply(this, argsArray);
+                        memo[argArray] = func.apply(this, argArray);
                         return memo[argArray];
                     }
 
@@ -54,16 +53,15 @@
             }
 
 
-            var fibonacci = _.memoize(function(n) {
+            var fibonacci = function(n) {
                 return n < 2 ? n: fibonacci(n - 1) + fibonacci(n - 2);
-            });
+            };
 
             var fib = memoize(fibonacci);
-
+            
             $(".result1 output").append(fib(20));
                       
             $(".result2 output").append(fib(20));
-
 
     	</pre>
 
@@ -105,11 +103,11 @@
     	<script>    		
 
 			function memoize(func){
-                debugger;
+                            
                 var memo = {};               
 
                 return function(){
-                    debugger;   
+                    
                     var argArray = Array.prototype.slice.call(arguments);
 
                     if(argArray in memo){
@@ -129,7 +127,7 @@
             };
 
             var fib = memoize(fibonacci);
-            debugger;
+            
             $(".result1 output").append(fib(20));
                       
             $(".result2 output").append(fib(20));
