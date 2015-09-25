@@ -1,0 +1,268 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />       
+        <title>Dissecting Underscore,  Underscore Explained</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+    </head>
+
+    <body>    	    
+
+
+    	<!-- @@@@@@@@@  THIS CODE IS FOR DISPLAY PURPOSE, UPDATE ONLY WHEN REAL CODE IS UPDATES ==== -->
+    	
+    	<pre>
+    		_.throttle(function, wait, [options]) 
+    	</pre>
+
+    	<pre class="">
+    		var throttled = _.throttle(updatePosition, 100);
+            $(window).scroll(throttled);
+		</pre>
+
+		<div class="my_solution">
+			My Solution:
+		</div>
+		
+    	<pre class="js">
+	    	
+           
+            //throttle leading means, you call function immediately and then call function only after timeout is complete
+            //trailing true, means you wait for timeout to end and then call function
+            function throttle(func, wait, options){                
+                
+                //creating timer and busy flag 
+                var timer, busy = false, calledMultipleTimes = false;
+
+                //return function which will be called and can pass arguments
+                function later(){
+
+                    //get all arguments
+                    var args = arguments;
+
+                    //busy is false by default, but if its true , then ignore the function calls
+                    if(busy){
+                        calledMultipleTimes = true;
+                        return;                        
+                    }
+
+                    //busy is false then make it true, because you are about to get busy
+                    busy = true;
+
+
+                    //if leading is passed then call function immediately 
+                    if(options.leading == false){
+                        //do nothing
+                    }else{
+                        func.apply(this, args);
+                    }                    
+                    
+                    //create timeout of wait time passed 
+                    timer = setTimeout(function(){
+                        
+                        //once timeout is complete , allow function to be called again, so make busy false
+                        busy = false;
+                        
+                        //calledMultipleTimes basically makes sure that trailing gets called only if called multiple times, 
+                        // if user clicked only once, and leading is true, then function is already called once so then no need to call trailing again
+                        if(calledMultipleTimes || options.leading == false){
+                            calledMultipleTimes = false;
+
+                            if(options.trailing == false){
+                                //do nothing
+                            }else{
+                                func.apply(this, args);
+                            }                             
+                        }
+
+                    }, wait);
+                }
+
+                return later;
+            }
+
+
+
+            var throttled1 = throttle(function(count){
+                    $(".result1 output").append(" " + count + " ");
+                }, 3000, {leading : false});    
+
+            var count1 = 0;
+
+            $(".result1 output").on("click", function(){                
+                throttled1(count1++);    
+            });
+
+
+
+
+            var throttled2 = throttle(function(count){
+                    $(".result2 output").append(" " + count + " ");
+                }, 3000, {trailing : false});    
+
+            var count2 = 0;
+
+            $(".result2 output").on("click", function(){                
+                throttled2(count2++);    
+            });
+            
+            
+
+    	</pre>
+
+    	<!-- @@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@@@@@@@@@@@@@@@@ -->
+
+
+
+    	<section class="result1">
+    		<strong>Output for Array:</strong>
+    		<output>
+                Click here to call throttle, {leading : false} :   
+    		</output>
+		</section>
+
+		<br><br>
+
+        <section class="result2">
+            <strong>Output for Array:</strong>
+            <output>
+                Click here to call throttle, {trailing : false} : 
+            </output>
+        </section>
+
+        <br><br>
+
+  
+        
+		
+
+
+		<div class="row">	
+			<div class="span9 columns">    
+				<h2>Comments Section</h2>
+			    <p>Feel free to comment on the post but keep it clean and on topic.</p>	
+				<div id="disqus_thread"></div>
+				<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+			</div>
+		</div>
+
+		
+
+    	<script>    		
+
+            //throttle leading means, you call function immediately and then call function only after timeout is complete
+            //trailing true, means you wait for timeout to end and then call function
+			function throttle(func, wait, options){                
+                
+                //creating timer and busy flag 
+                var timer, busy = false, calledMultipleTimes = false;
+
+                //return function which will be called and can pass arguments
+                function later(){
+
+                    //get all arguments
+                    var args = arguments;
+
+                    //busy is false by default, but if its true , then ignore the function calls
+                    if(busy){
+                        calledMultipleTimes = true;
+                        return;                        
+                    }
+
+                    //busy is false then make it true, because you are about to get busy
+                    busy = true;
+
+
+                    //if leading is passed then call function immediately 
+                    if(options.leading == false){
+                        //do nothing
+                    }else{
+                        func.apply(this, args);
+                    }                    
+                    
+                    //create timeout of wait time passed 
+                    timer = setTimeout(function(){
+                        
+                        //once timeout is complete , allow function to be called again, so make busy false
+                        busy = false;
+                        
+                        //calledMultipleTimes basically makes sure that trailing gets called only if called multiple times, 
+                        // if user clicked only once, and leading is true, then function is already called once so then no need to call trailing again
+                        if(calledMultipleTimes || options.leading == false){
+                            calledMultipleTimes = false;
+
+                            if(options.trailing == false){
+                                //do nothing
+                            }else{
+                                func.apply(this, args);
+                            }                             
+                        }
+
+                    }, wait);
+                }
+
+                return later;
+            }
+
+
+
+            var throttled1 = throttle(function(count){
+                    $(".result1 output").append(" " + count + " ");
+                }, 3000, {leading : false});    
+
+            var count1 = 0;
+
+            $(".result1 output").on("click", function(){                
+                throttled1(count1++);    
+            });
+
+
+
+
+            var throttled2 = throttle(function(count){
+                    $(".result2 output").append(" " + count + " ");
+                }, 3000, {trailing : false});    
+
+            var count2 = 0;
+
+            $(".result2 output").on("click", function(){                
+                throttled2(count2++);    
+            });
+            
+            
+
+    	</script>
+
+    	<script>
+			$( "body" ).scrollTop( 0 );
+			    	
+    		/* * * CONFIGURATION VARIABLES * * */
+		    var disqus_shortname = 'harshpandya';		    
+		    /* * * DON'T EDIT BELOW THIS LINE * * */		    			
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);	        
+	        DISQUS.reset({
+			  reload: true,
+			  config: function () {  
+			    this.page.identifier = window.location.hash.replace("#", "");
+			    this.page.url = window.location.href.replace("#", "#!");
+			  }
+			});
+
+
+    		//CODE HIGHLIGHTER
+    		//http://steamdev.com/snippet/  for themes
+
+    		$("pre.js").snippet("javascript",appConfig.jsConfig);
+			$("pre.htmlCode").snippet("html",appConfig.htmlConfig);
+			$("pre.styles").snippet("css",appConfig.styleConfig);
+    	</script>
+    </body>
+</html>
