@@ -6,7 +6,39 @@
 <body>
 Test page
 
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
+
+<script type="text/javascript" src="js/libs/jquery-2.1.4.min.js"></script> 
 <script type="text/javascript" src="js/libs/underscore-min.js"></script>  	
 
 <script>
@@ -14,12 +46,21 @@ Test page
 
 
 
-debugger;
-var filteredGoal = _.unzip([['moe', 'larry', 'curly'], [30, 40, 50], [true, false, false]]);
+var throttledHandler = _.throttle(function(){
+    console.log("called");
+}, 5000, {leading: false, trailing : false});
 
-alert(JSON.stringify(filteredGoal).toString());
+$(window).on('click', throttledHandler);
 
+// var timer;
 
+// /* Scroll event handler */
+// $(window).on('click', function(e) {
+//     clearTimeout(timer);
+//     timer = setTimeout(function(){
+//         console.log("called");
+//     }, 5000);
+// });
 
 
 </script>
