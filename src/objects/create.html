@@ -31,28 +31,27 @@
         
         <pre class="js">
             
-          //Returns a copy of the object where the keys have become the values and the values the keys. For this to work, all of your object's values should be unique and string serializable.
-            function invert(obj){      
-                
-                var resultObj = {};
-
-                //check if it is object
-                if(typeof obj === "object"){
-                    for(var key in obj){
-                        if(obj.hasOwnProperty(key)){
-                            var value = obj[key];
-
-                            resultObj[value] = key;
-
-                        }
-                    }
-                }
-
-                return resultObj;             
+            //Creates a new object with the given prototype, optionally attaching props as own properties. Basically, Object.create, but without all of the property descriptor jazz.
+            function create(prototype, obj){                      
+                var result = Object.create(prototype, obj);
+                return result;
             }
 
+            function Stooge(){
+                name = "test";
+            }
 
-            $(".result1 output").append(JSON.stringify(invert({Moe: "Moses", Larry: "Louis", Curly: "Jerome"})).toString());
+            Stooge.prototype = {
+                make : "testMake"
+            };
+
+            var properties = {
+                name: {
+                    value : "moe"
+                }
+            }
+
+            $(".result1 output").append(JSON.stringify(create(Stooge.prototype, properties)).toString());
 
             
         </pre>
@@ -91,8 +90,7 @@
         <script>            
 
             //Creates a new object with the given prototype, optionally attaching props as own properties. Basically, Object.create, but without all of the property descriptor jazz.
-            function create(prototype, obj){      
-                debugger;
+            function create(prototype, obj){                      
                 var result = Object.create(prototype, obj);
                 return result;
             }
@@ -110,6 +108,7 @@
                     value : "moe"
                 }
             }
+
             $(".result1 output").append(JSON.stringify(create(Stooge.prototype, properties)).toString());
 
 
